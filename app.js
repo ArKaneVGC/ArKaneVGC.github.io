@@ -14,7 +14,7 @@ let changeHandler=(e) => {
         let max=[0,0,0];
         for(let i=0;i<stats[2];i+=4){
             if(HPCalc(stats[0],i)*defCalc(stats[1],stats[2]-i,stats[3])>max[2]&&i<=252&&stats[2]-i<=252){
-                max=[i,stats[2]-i,HPCalc(stats[0],i)*defCalc(stats[1],stats[2]-i)];
+                max=[i,stats[2]-i,HPCalc(stats[0],i)*defCalc(stats[1],stats[2]-i,stats[3])];
             }
             output.innerText="Optimal EVs: "+ max[0]+" HP, "+max[1]+" Def/SpD";
         }
@@ -23,12 +23,12 @@ let changeHandler=(e) => {
 };
 
 let HPCalc=(base,ev) =>{
-    let hp=Math.floor(2*base+31+Math.floor(ev/4))+60;
+    let hp=Math.floor((2*base+31+Math.floor(ev/4))/2)+60;
     return hp;
 };
 
 let defCalc=(base,ev,nature)=>{
-    let def=Math.floor(Math.floor((2*base+31+ev/4)/2+5)*(nature?1.1:1));
+    let def=Math.floor(Math.floor((2*base+31+Math.floor(ev/4))/2+5)*(nature?1.1:1));
     return def;
 };
 
