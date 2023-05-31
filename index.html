@@ -1,13 +1,25 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="app.css"/>
-</head>
+    <head>
+        <link rel="stylesheet" href="app.css"/>
+    </head>
 <body>
-<h1>ArKane's Website Test</h1>
+    <h1>Quick EV Calculator</h1>
 
-<button onclick="alertButton()">Test Button</button>
+
+    <form>
+        <label for="testInput">Base HP</label><br>
+        <input type="number" id="baseHP" name="baseHP" min="0" value="100"><br>
+        <label for="testInput">Base Def/SpD</label><br>
+        <input type="number" id="baseDef" name="baseDef" min="0" value="100">
+        <label for="nature">Boosting Nature:</label>
+        <input type="checkbox" id="nature" name="nature"><br>
+        <label for="testInput">EVs available</label><br>
+        <input type="number" id="EVs" name="EVs" min="0" max="504" value="504" step="4"><br>
+    </form>
+
+    <span id="output">Optimal EVs: 252 HP, 252 Def/SpD</span>
+    <script src="app.js"></script>
 </body>
 
-<script src="app.js"></script>
 </html>
