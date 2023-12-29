@@ -64,3 +64,8 @@ $(".sp .base, .sp .evs, .sp .ivs").bind("keyup change input", function () {
 $(".evs").bind("keyup change input", function () {
     setEVs($(this).closest(".stat"), $(this).val());
 });
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("/serviceworker.js");
+ }
+ 
