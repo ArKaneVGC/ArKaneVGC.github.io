@@ -25,12 +25,12 @@ function calcStat(poke, statName) {
         let level = 50;
         let evs = ~~stat.find(".evs").val();
         let ivs = ~~stat.find(".ivs").val();
-        total = Math.floor((base * 2 + ivs + Math.floor(evs / 4)) * level / 100)+5;
+        total = Math.floor((base * 2 + ivs + Math.floor(evs / 4)) * level / 100) + 5;
     }
     stat.find(".total").text(total);
 }
 
-function setEVs(stat, val){
+function setEVs(stat, val) {
     ~~stat.find(".range").val(val);
     ~~stat.find(".num").val(val);
 
@@ -66,6 +66,19 @@ $(".evs").bind("keyup change input", function () {
 });
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register("/serviceworker.js");
- }
- 
+    try {
+        navigator.serviceWorker.register("/serviceworker.js");
+
+        if (registration.installing) {
+            console.log("Service worker installing");
+        } else if (registration.waiting) {
+            console.log("Service worker installed");
+        } else if (registration.active) {
+            console.log("Service worker active");
+        }
+    }
+    catch (error) {
+        console.error(`Registration failed with ${error}`);
+    }
+
+}
