@@ -1,35 +1,66 @@
-﻿//baseHP, baseDef, EVs, nature
-let statEvents=[document.getElementById("baseHP"),document.getElementById("baseDef"),document.getElementById("EVs"),document.getElementById("nature")];
-let stats=[0,0,0,0];
-let output=document.getElementById("output");
-let changeHandler=(e) => {
-    for(let i=0;i<3;i++)
-        stats[i]=statEvents[i].value;
-    stats[3]=statEvents[3].checked;
-    if(stats[2]>504){
-        stats[2]=504;
-        statEvents[2].value=504;
-    }
-    else{
-        let max=[0,0,0];
-        for(let i=4;i<stats[2];i+=8){
-            if(HPCalc(stats[0],i)*defCalc(stats[1],stats[2]-i,stats[3])>max[2]&&i<=252&&stats[2]-i<=252){
-                max=[i,stats[2]-i,HPCalc(stats[0],i)*defCalc(stats[1],stats[2]-i,stats[3])];
-            }
-            output.innerText="Optimal EVs: "+ max[0]+" HP, "+max[1]+" Def/SpD";
-        }
-    }
-    
-};
+﻿
 
-let HPCalc=(base,ev) =>{
-    let hp=Math.floor((2*base+31+Math.floor(ev/4))/2)+60;
-    return hp;
-};
-let defCalc=(base,ev,nature)=>{
-    let def=Math.floor(Math.floor((2*base+31+Math.floor(ev/4))/2+5)*(nature?1.1:1));
-    return def;
-};
-statEvents.forEach((e) => {
-    e.addEventListener(e.type == "checkbox" ? "change" : "input", changeHandler);
- });
+function calcHP(poke) {
+    let hp = poke.find(".hp");
+    let total;
+    let base = ~~hp.find(".base").val();
+    if (base === 1) {
+        total = 1;
+    } else {
+        let level = 50;
+        let evs = ~~hp.find(".evs").val();
+        let ivs = ~~hp.find(".ivs").val();
+        total = Math.floor((base * 2 + ivs + Math.floor(evs / 4)) * level / 100) + level + 10;
+    }
+    hp.find(".total").text(total);
+}
+
+function calcStat(poke, statName) {
+    let stat = poke.find(statName);
+    let total;
+    let base = ~~stat.find(".base").val();
+    if (base === 1) {
+        total = 1;
+    } else {
+        let level = 50;
+        let evs = ~~stat.find(".evs").val();
+        let ivs = ~~stat.find(".ivs").val();
+        total = Math.floor((base * 2 + ivs + Math.floor(evs / 4)) * level / 100)+5;
+    }
+    stat.find(".total").text(total);
+}
+
+function setEVs(stat, val){
+    ~~stat.find(".range").val(val);
+    ~~stat.find(".num").val(val);
+
+}
+
+$(".hp .base, .hp .evs, .hp .ivs").bind("keyup change input", function () {
+    calcHP($(this).closest(".poke-info"));
+});
+
+$(".at .base, .at .evs, .at .ivs").bind("keyup change input", function () {
+    calcStat($(this).closest(".poke-info"), ".at");
+});
+
+$(".df .base, .df .evs, .df .ivs").bind("keyup change input", function () {
+    calcStat($(this).closest(".poke-info"), ".df");
+});
+
+$(".sa .base, .sa .evs, .sa .ivs").bind("keyup change input", function () {
+    calcStat($(this).closest(".poke-info"), ".sa");
+});
+
+$(".sd .base, .sd .evs, .sd .ivs").bind("keyup change input", function () {
+    calcStat($(this).closest(".poke-info"), ".sd");
+});
+
+$(".sp .base, .sp .evs, .sp .ivs").bind("keyup change input", function () {
+    calcStat($(this).closest(".poke-info"), ".sp");
+});
+
+
+$(".evs").bind("keyup change input", function () {
+    setEVs($(this).closest(".stat"), $(this).val());
+});

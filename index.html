@@ -1,25 +1,92 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="app.css"/>
-    </head>
+
 <body>
-    <h1>ArKane's EV Calculator</h1>
 
+    <div id="p1" class="poke-info">
+        <table>
+            <tr>
+                <th></th>
+                <th>Base</th>
+                <th>EVs</th>
+                <th>IVs</th>
+                <th></th>
+            </tr>
+            <tr class="hp stat">
+                <td>HP</td>
+                <td><input type="number" class="base calc-trigger" value="100" min="1" max="255" step="1" size = "4"/></td>
+                <td><input type="range" class="evs calc-trigger range" value="0" min="0" max="252" step="4" /><input
+                        type="number" class="evs calc-trigger num" value="0" min="0" max="252" step="4" size = "4"/></td>
+                <td><input type="number" class="ivs calc-trigger" value="31" min="0" max="31" step="1" size = "4"/></td>
+                <td>
+                    <p><output class="total">175</output></p>
+                </td>
 
-    <form>
-        <label for="baseHP">Base HP</label><br>
-        <input type="number" id="baseHP" name="baseHP" min="0" value="100"><br>
-        <label for="baseDef">Base Def/SpD</label><br>
-        <input type="number" id="baseDef" name="baseDef" min="0" value="100">
-        <label for="nature">Boosting Nature:</label>
-        <input type="checkbox" id="nature" name="nature"><br>
-        <label for="EVs">EVs available</label><br>
-        <input type="number" id="EVs" name="EVs" min="8" max="504" value="504" step="4"><br>
-    </form>
+            </tr>
+            <tr class="at stat">
+                <td>Attack</td>
+                <td><input type="number" class="base calc-trigger" value="100" min="1" max="255" step="1" size = "4"/></td>
+                <td><input type="range" class="evs calc-trigger range" value="0" min="0" max="252" step="4" /><input
+                        type="number" class="evs calc-trigger num" value="0" min="0" max="252" step="4" size = "4"/></td>
+                <td><input type="number" class="ivs calc-trigger" value="31" min="0" max="31" step="1" size = "4"/></td>
+                <td>
+                    <p><output class="total">120</output></p>
+                </td>
 
-    <span id="output">Optimal EVs: 252 HP, 252 Def/SpD</span>
-    <script src="app.js"></script>
+            </tr>
+            <tr class="df stat">
+                <td>Defense</td>
+                <td><input type="number" class="base calc-trigger" value="100" min="1" max="255" step="1" size = "4"/></td>
+                <td><input type="range" class="evs calc-trigger range" value="0" min="0" max="252" step="4" /><input
+                        type="number" class="evs calc-trigger num" value="0" min="0" max="252" step="4" size = "4"/></td>
+                <td><input type="number" class="ivs calc-trigger" value="31" min="0" max="31" step="1" size = "4"/></td>
+                <td>
+                    <p><output class="total">120</output></p>
+                </td>
+
+            </tr>
+            <tr class="sa stat">
+                <td>Sp. Atk</td>
+                <td><input type="number" class="base calc-trigger" value="100" min="1" max="255" step="1" size = "4"/></td>
+                <td><input type="range" class="evs calc-trigger range" value="0" min="0" max="252" step="4" /><input
+                        type="number" class="evs calc-trigger num" value="0" min="0" max="252" step="4" size = "4"/></td>
+                <td><input type="number" class="ivs calc-trigger" value="31" min="0" max="31" step="1" size = "4"/></td>
+                <td>
+                    <p><output class="total">120</output></p>
+                </td>
+
+            </tr>
+            <tr class="sd stat">
+                <td>Sp. Def</td>
+                <td><input type="number" class="base calc-trigger" value="100" min="1" max="255" step="1" size = "4"/></td>
+                <td><input type="range" class="evs calc-trigger range" value="0" min="0" max="252" step="4" /><input
+                        type="number" class="evs calc-trigger num" value="0" min="0" max="252" step="4" size = "4"/></td>
+                <td><input type="number" class="ivs calc-trigger" value="31" min="0" max="31" step="1" size = "4"/></td>
+                <td>
+                    <p><output class="total">120</output></p>
+                </td>
+
+            </tr>
+            <tr class="sp stat">
+                <td>Speed</td>
+                <td><input type="number" class="base calc-trigger" value="100" min="1" max="255" step="1" size = "4"/></td>
+                <td><input type="range" class="evs calc-trigger range" value="0" min="0" max="252" step="4" /><input
+                        type="number" class="evs calc-trigger num" value="0" min="0" max="252" step="4" size = "4"/></td>
+                <td><input type="number" class="ivs calc-trigger" value="31" min="0" max="31" step="1" size = "4"/></td>
+                <td>
+                    <p><output class="total">120</output></p>
+                </td>
+
+            </tr>
+            
+        </table>
+        <br>
+    </div>
+
+    <p id="out"></p>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="starting.js"></script>
+
 </body>
 
 </html>
