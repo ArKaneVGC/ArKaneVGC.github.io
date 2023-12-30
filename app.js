@@ -88,3 +88,4 @@ const registerServiceWorker = async () => {
         console.log("serviceworker not in navigator")
     }
 };
+registerServiceWorker();
