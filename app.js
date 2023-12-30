@@ -84,5 +84,7 @@ const registerServiceWorker = async () => {
             console.error(`Registration failed with ${error}`);
         }
 
+    }else{
+        console.log("serviceworker not in navigator")
     }
 };
