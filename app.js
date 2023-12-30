@@ -68,7 +68,7 @@ $(".evs").bind("keyup change input", function () {
 const registerServiceWorker = async () => {
     if ('serviceWorker' in navigator) {
         try {
-            let registration = await navigator.serviceWorker.register("/serviceworker.js");
+            const registration = await navigator.serviceWorker.register("/serviceworker.js");
 
             if (registration.installing) {
                 console.log("Service worker installing");
