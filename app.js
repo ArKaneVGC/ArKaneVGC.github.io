@@ -65,20 +65,22 @@ $(".evs").bind("keyup change input", function () {
     setEVs($(this).closest(".stat"), $(this).val());
 });
 
-if ('serviceWorker' in navigator) {
-    try {
-        let registration = await navigator.serviceWorker.register("/serviceworker.js");
+const registerServiceWorker = async () => {
+    if ('serviceWorker' in navigator) {
+        try {
+            let registration = await navigator.serviceWorker.register("/serviceworker.js");
 
-        if (registration.installing) {
-            console.log("Service worker installing");
-        } else if (registration.waiting) {
-            console.log("Service worker installed");
-        } else if (registration.active) {
-            console.log("Service worker active");
+            if (registration.installing) {
+                console.log("Service worker installing");
+            } else if (registration.waiting) {
+                console.log("Service worker installed");
+            } else if (registration.active) {
+                console.log("Service worker active");
+            }
         }
-    }
-    catch (error) {
-        console.error(`Registration failed with ${error}`);
-    }
+        catch (error) {
+            console.error(`Registration failed with ${error}`);
+        }
 
-}
+    }
+};
