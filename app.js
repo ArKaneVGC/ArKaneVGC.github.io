@@ -76,7 +76,8 @@ const registerServiceWorker = async () => {
                 console.log("Service worker installed");
             } else if (registration.active) {
                 console.log("Service worker active");
-            }
+            } 
+            console.log(registration);
         }
         catch (error) {
             console.error(`Registration failed with ${error}`);
