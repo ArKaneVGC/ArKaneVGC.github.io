@@ -62,7 +62,7 @@ $(".sp .base, .sp .evs, .sp .ivs").bind("keyup change input", function () {
 });
 
 $(".button").bind("input", function(){
-    $(this).style.visibility = "false";
+    $(this).style.visibility = "hidden";
 } )
 
 
