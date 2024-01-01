@@ -1,4 +1,5 @@
-﻿
+﻿let p1 = document.getElementById("p1");
+let p2 = document.getElementById("p2");
 
 function calcHP(poke) {
     let hp = poke.find(".hp");
@@ -60,10 +61,16 @@ $(".sp .base, .sp .evs, .sp .ivs").bind("keyup change input", function () {
     calcStat($(this).closest(".poke-info"), ".sp");
 });
 
+$(".button").bind("input", function(){
+    $(this).style.visibility = "false";
+} )
+
 
 $(".evs").bind("keyup change input", function () {
     setEVs($(this).closest(".stat"), $(this).val());
 });
+
+
 
 const registerServiceWorker = async () => {
     if ('serviceWorker' in navigator) {
