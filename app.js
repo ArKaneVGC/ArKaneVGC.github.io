@@ -53,7 +53,7 @@ $(".sa .base, .sa .evs, .sa .ivs").bind("keyup change input", function () {
     calcStat($(this).closest(".poke-info"), ".sa");
 });
 
-$(".sd .base, .sd .evs, .sd .ivs").bind("keyup change input", function () {       
+$(".sd .base, .sd .evs, .sd .ivs").bind("keyup change input", function () {
     calcStat($(this).closest(".poke-info"), ".sd");
 });
 
@@ -61,10 +61,10 @@ $(".sp .base, .sp .evs, .sp .ivs").bind("keyup change input", function () {
     calcStat($(this).closest(".poke-info"), ".sp");
 });
 
-$(".button").bind("input", function(){
+$(".button").bind("click", function () {
     console.log("button pressed");
     $(this).style.visibility = "hidden";
-} );
+});
 
 
 $(".evs").bind("keyup change input", function () {
@@ -83,13 +83,13 @@ const registerServiceWorker = async () => {
                 console.log("Service worker installed");
             } else if (registration.active) {
                 console.log("Service worker active");
-            } 
+            }
         }
         catch (error) {
             console.error(`Registration failed with ${error}`);
         }
 
-    }else{
+    } else {
         console.log("serviceworker not in navigator")
     }
 };
